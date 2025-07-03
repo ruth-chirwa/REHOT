@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style.css">
+    <title>Rural e-Health Outreach Tracker</title>
+  </head>
+  <body>
+
+      <header>
+        <h1> Rural e-Health Outreach Tracker</h1>
+      </header>
+    <div class="container">
+      <nav class="sidebar">
+        <button onclick="showTab('dashboard')">📊Dashboard</button>
+        <button onclick="showTab('patients')">😷Patients</button>
+        <button onclick="showTab('log')">🖊️Log Outreach</button>
+        <button onclick="showPopup('logout')" style="padding: 10px 20px;">⬅️Log-out</button>
+      </nav>
+
+      <div class="content">
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="tab">
+          <div class="main-content">
+            <div class="header">
+                <h1>Hospital Dashboard</h1>
+                <div class="date">Friday, December 16th 2023</div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Patients</h3>
+                    <div class="value">142</div>
+                    <div class="comparison">↑ 12% from yesterday</div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Patients Reached Today</h3>
+                    <div class="value">38</div>
+                    <div class="comparison negative">↓ 5% from last week</div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Follow-Ups</h3>
+                    <div class="value">24</div>
+                    <div class="comparison">↑ 8% from yesterday</div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Patient Statistics</h2>
+            <div class="patient-stats">
+                <div class="stat-card">
+                    <h3>Patients Dealt</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 75%"></div>
+                    </div>
+                    <div>75% Dealt</div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Department Statistics</h2>
+            <div class="department-stats">
+                <div class="stat-card">
+                    <h3>Cardiology</h3>
+                    <div class="value">48</div>
+                    <div>Patients</div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Pediatrics</h3>
+                    <div class="value">38</div>
+                    <div>Patients</div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Orthopedics</h3>
+                    <div class="value">29</div>
+                    <div>Patients</div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Neurology</h3>
+                    <div class="value">18</div>
+                    <div>Patients</div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Oncology</h3>
+                    <div class="value">15</div>
+                    <div>Patients</div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Regional Patients</h2>
+            <div class="department-stats">
+                <div class="stat-card">
+                    <h3>Local Residents</h3>
+                    <div class="value">92</div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>International</h3>
+                    <div class="value">24</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Patients -->
+        <div id="patients" class="tab hidden">
+          <div class="card">
+            <h3>Patient List</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Status</th>
+                  <th>Contact</th>
+                  <th>Department</th>
+                  <th>Region</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Jane Banda</td>
+                  <td>28</td>
+                  <td>Follow-up</td>
+                  <td>9997376368</td>
+                  <td>Neurology</td>
+                  <td>Local Resident</td>
+                  <td>x-ray</td>
+                </tr>
+                <tr>
+                  <td>Jeff Mwale</td>
+                  <td>42</td>
+                  <td>Reached</td>
+                  <td>99945373938</td>
+                  <td>Orthopedics</td>
+                  <td>International</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>James Makondetsa</td>
+                  <td>22</td>
+                  <td>Follow-up</td>
+                  <td>986736738374</td>
+                  <td>Cardiology</td>
+                  <td>Local Resident</td>
+                  <td>Require check-up</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Log Outreach -->
+        <div id="log" class="tab hidden">
+          <div class="card">
+            <h3>Log Outreach Activity</h3>
+            <form onsubmit="logOutreach(event)">
+              <input type="text" placeholder="Patient Name" required>
+              <select required>
+                <option value="">Method</option>
+                <option>Phone Call</option>
+                <option>SMS</option>
+                <option>Home Visit</option>
+              </select>
+              <input type="number" placeholder="Patient Age" min="0" max="120" required>
+              <select required>
+                <option value="">Outcome</option>
+                <option>Reached</option>
+                <option>Unreachable</option>
+                <option>Needs Follow-up</option>
+              </select>
+              <select>
+                <option value="">Department</option>
+                <option>Cardiology</option>
+                <option>Pediatrics</option>
+                <option>Orthopedics</option>
+                <option>Neurology</option>
+                <option>Oncology</option>
+              </select>
+              <select>
+                <option value="">Region</option>
+                <option>Local Resident</option>
+                <option>International</option>
+              </select>
+              <textarea placeholder="Notes" rows="3"></textarea>
+              <div class="button">
+              <button type="submit">Submit Log</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- log out-->
+        <div id="logout" class="popup-overlay">
+            <div class="popup-box">
+              <h3>Log-out Confirmation</h3>
+              <p>Are you sure you want to log out?</p>
+              <div class="popup-buttons">
+                <button class="btn btn-cancel" onclick="hidePopup()">Cancel</button>
+                <button class="btn btn-logout" onclick="logout()">Log-out</button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+      <script src="function.js"></script>
+
+  </body>
+</html>
