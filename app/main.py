@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from .routers import patients, visits
 from .database import engine, Base
-
+# Import the database engine and Base from the database module
 
 
 # Create the database tables
