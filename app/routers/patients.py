@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from .. import crud, schemas,database
 
 router = APIRouter(
-    prefix="/patients",
+    #prefix="/patients",
     tags=["patients"]
 )
 
@@ -14,6 +14,7 @@ def get_db():
         yield db
     finally:
         db.close()
+
 
 @router.post("/", response_model=schemas.PatientOut)
 def create_patient(patient: schemas.PatientCreate, db: Session = Depends(get_db)):
@@ -38,3 +39,5 @@ def get_patient(patient_id: int, db: Session = Depends(get_db)):
     if not patient:
         raise HTTPException(status_code=404, detail="Patient not found")
     return patient
+
+

@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from app import crud, schemas,database
 
 router = APIRouter(
-    prefix="/visits",
+    #prefix="/visits",
     tags=["Health Visits"]
 )
 
