@@ -109,93 +109,90 @@
     </div>
 
         <!-- Patients -->
-        <div id="patients" class="tab hidden">
-          <div class="card">
-            <h3>Patient List</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Age</th>
-                  <th>Status</th>
-                  <th>Contact</th>
-                  <th>Department</th>
-                  <th>Region</th>
-                  <th>Notes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Jane Banda</td>
-                  <td>28</td>
-                  <td>Follow-up</td>
-                  <td>9997376368</td>
-                  <td>Neurology</td>
-                  <td>Local Resident</td>
-                  <td>x-ray</td>
-                </tr>
-                <tr>
-                  <td>Jeff Mwale</td>
-                  <td>42</td>
-                  <td>Reached</td>
-                  <td>99945373938</td>
-                  <td>Orthopedics</td>
-                  <td>International</td>
-                  <td>-</td>
-                </tr>
-                <tr>
-                  <td>James Makondetsa</td>
-                  <td>22</td>
-                  <td>Follow-up</td>
-                  <td>986736738374</td>
-                  <td>Cardiology</td>
-                  <td>Local Resident</td>
-                  <td>Require check-up</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+         <div id="patients" class="tab hidden">
+<table id="patients" border="1" class="table-wrapper">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Village</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
 
-        <!-- Log Outreach -->
-        <div id="log" class="tab hidden">
-          <div class="card">
-            <h3>Log Outreach Activity</h3>
-            <form onsubmit="logOutreach(event)">
-              <input type="text" placeholder="Patient Name" required>
-              <select required>
-                <option value="">Method</option>
-                <option>Phone Call</option>
-                <option>SMS</option>
-                <option>Home Visit</option>
-              </select>
-              <input type="number" placeholder="Patient Age" min="0" max="120" required>
-              <select required>
-                <option value="">Outcome</option>
-                <option>Reached</option>
-                <option>Unreachable</option>
-                <option>Needs Follow-up</option>
-              </select>
-              <select>
-                <option value="">Department</option>
-                <option>Cardiology</option>
-                <option>Pediatrics</option>
-                <option>Orthopedics</option>
-                <option>Neurology</option>
-                <option>Oncology</option>
-              </select>
-              <select>
-                <option value="">Region</option>
-                <option>Local Resident</option>
-                <option>International</option>
-              </select>
-              <textarea placeholder="Notes" rows="3"></textarea>
-              <div class="button">
-              <button type="submit">Submit Log</button>
-              </div>
-            </form>
-          </div>
-        </div>
+
+</div>
+
+<!-- Modal -->
+<div id="patientModal" style="display:none; position:fixed; top:10%; left:50%; transform:translateX(-50%);
+  background:#fff; padding:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.3); z-index:1000;">
+  <h2>Patient Details</h2>
+  <div id="modalContent"></div>
+  <button onclick="closeModal()">Close</button>
+</div>
+
+<!-- Optional: simple overlay -->
+<div id="overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.5); z-index:999;" onclick="closeModal()"></div>
+
+      <!-- Log Outreach -->
+<div id="log" class="tab hidden">
+  <div class="card">
+    <h3>Log Outreach Activity</h3>
+    <form onsubmit="logOutreach(event)">
+      <!-- Required fields -->
+      <input type="text" name="name" placeholder="Patient Name" required>
+
+      <select name="gender" required>
+        <option value="">Gender</option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+      </select>
+
+      <input type="text" name="village" placeholder="Village" required>
+
+      <input type="number" name="age" placeholder="Patient Age" min="0" max="120" required>
+
+      <!-- Optional/Extra fields -->
+      <select name="status">
+        <option value="">Status</option>
+        <option value="Reached">Reached</option>
+        <option value="Unreachable">Unreachable</option>
+        <option value="Needs Follow-up">Needs Follow-up</option>
+      </select>
+
+      <input type="text" name="contact" placeholder="Phone Number">
+
+      <select name="department">
+        <option value="">Department</option>
+        <option>Cardiology</option>
+        <option>Pediatrics</option>
+        <option>Orthopedics</option>
+        <option>Neurology</option>
+        <option>Oncology</option>
+      </select>
+
+      <select name="region">
+        <option value="">Region</option>
+        <option>Central</option>
+        <option>South</option>
+        <option>North</option>
+        <option>International</option>
+      </select>
+
+      <textarea name="notes" placeholder="Notes" rows="3"></textarea>
+
+      <div class="button">
+        <button type="submit" onsubmit="logOutreach(event)">Submit Log</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
         <!-- log out-->
         <div id="logout" class="popup-overlay">
             <div class="popup-box">

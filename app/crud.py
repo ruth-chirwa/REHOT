@@ -17,12 +17,12 @@ def get_patient_by_id(db: Session, patient_id: int):
 
 #visit logic
 def create_visit(db: Session, visit: schemas.VisitCreate):
-    new_visit = models.HealthVisit(**visit.dict())
+    new_visit = models.Visit(**visit.dict())
     db.add(new_visit)
     db.commit()
     db.refresh(new_visit)
     return new_visit
 
 def get_visits_by_patient_id(db: Session, patient_id: int):
-    return db.query(models.HealthVisit).filter(models.HealthVisit.patient_id == patient_id).all()
+    return db.query(models.Visit).filter(models.Visit.patient_id == patient_id).all()
 

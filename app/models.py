@@ -11,10 +11,17 @@ class Patient(Base):
     gender = Column(String)
     village = Column(String)
 
+    # New fields
+    status = Column(String)
+    contact = Column(String)
+    department = Column(String)
+    region = Column(String)
+    notes = Column(String)
+    
     visits = relationship("Visit", back_populates="patient")
 
 #Health visit table
-class HealthVisit(Base):
+class Visit(Base):
     __tablename__ = 'health_visits'
 
     id = Column(Integer, primary_key=True, index=True)
